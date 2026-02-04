@@ -9,7 +9,7 @@ class EndocrineSystem:
         self.field[chemical] = self.field.get(chemical, 0.0) + intensity
         self.field[chemical] = min(self.field[chemical], 1.0) # Cap at 100%
 
-    def process_decay(self):
+    def decay(self):
         """Your 'Brake' logic integrated into the tick."""
         for chem in list(self.field.keys()):
             self.field[chem] *= (1.0 - self.decay_rate)
