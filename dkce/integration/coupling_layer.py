@@ -40,11 +40,6 @@ class DKCECoupler:
         # 1. Homeostatic Mirror: Analyze vitals and trigger secretions
         self.homeostasis.tick(vitals)
         
-        # 2. Endocrine Decay (The 'Brake' logic from your first snippet)
-        # This ensures hormones don't linger forever, preventing 'system flooding'
-        if hasattr(self.endocrine, 'process_decay'):
-            self.endocrine.process_decay(rate=0.05)
-        
         # 3. Cognitive Synchronization: Update Narrative and Rituals on state change
         current_state = self.homeostasis.current_state
         if current_state != self._last_state:
