@@ -1,0 +1,26 @@
+from dkce.integration.dkce_engine import DKCEEngine
+# Assuming your repo structure allows this import
+from vitals import VitalsMonitor 
+
+def process_lifecycle():
+    engine = DKCEEngine()
+    # Your repository's vitals logic initialized here
+    monitor = VitalsMonitor() 
+
+    print("[PROCESS] DKCE Heartbeat Active.")
+
+    try:
+        while True:
+            # 1. SENSE: Get real data from your vitals logic
+            raw_vitals = monitor.get_current_metrics()
+            
+            # 2. REGULATE & DECAY: Pulse the coupler
+            # This is where your first snippet's decay logic executes
+            engine.coupler.pulse(raw_vitals)
+            
+            # 3. LOG: Telemetry recording
+            print(f"[PROCESS] Vitals: {raw_vitals} | State: {engine.coupler.homeostasis.current_state.name}")
+            
+            time.sleep(1.0)
+    except KeyboardInterrupt:
+        print("[PROCESS] Shutdown.")
